@@ -1,1486 +1,1059 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#f7f3e9">
-
-<title>A Linha Vermelha do Casamento | O SEU LUGAR®</title>
-
-<style>
-:root {
-  --verde: #183d32;
-  --creme: #f7f3e9;
-  --texto: #27332c;
-  --borda: #e5e3db;
-  --vermelho: #ad4141;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  margin: 0;
-  background: var(--creme);
-  color: var(--texto);
-  font-family: Arial, sans-serif;
-  line-height: 1.65;
-}
-
-main {
-  max-width: 740px;
-  margin: auto;
-  padding: 28px 18px 65px;
-}
-
-.brand {
-  text-align: center;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: var(--verde);
-  font-weight: bold;
-  margin-bottom: 45px;
-}
-
-h1, h2, h3 {
-  font-family: Georgia, serif;
-  color: var(--verde);
-  line-height: 1.2;
-}
-
-h1 {
-  font-size: clamp(40px, 8vw, 65px);
-  font-weight: normal;
-  margin-bottom: 25px;
-}
-
-h2 {
-  font-size: clamp(28px, 5vw, 40px);
-  font-weight: normal;
-}
-
-h3 {
-  font-size: 23px;
-  font-weight: normal;
-}
-
-p {
-  font-size: 16px;
-}
-
-.lead {
-  font-size: 20px;
-  line-height: 1.5;
-}
-
-.muted {
-  color: #657168;
-  font-size: 14px;
-}
-
-.center {
-  text-align: center;
-}
-
-strong {
-  color: var(--verde);
-}
-
-button {
-  display: block;
-  width: 100%;
-  background: var(--verde);
-  color: white;
-  border: 0;
-  border-radius: 9px;
-  padding: 18px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 15px;
-  transition: background 0.2s, transform 0.2s;
-}
-
-button:hover {
-  background: #285746;
-  transform: translateY(-1px);
-}
-
-button.secondary {
-  background: #e0e8df;
-  color: var(--verde);
-}
-
-button.secondary:hover {
-  background: #d1ded0;
-}
-
-button:focus-visible,
-input:focus-visible {
-  outline: 3px solid #b28a43;
-  outline-offset: 3px;
-}
-
-.hidden {
-  display: none !important;
-}
-
-.card {
-  background: #fffdf8;
-  border: 1px solid var(--borda);
-  border-radius: 16px;
-  padding: 25px;
-  margin: 24px 0;
-}
-
-/* ABERTURA */
-
-.intro-question {
-  margin-top: 35px;
-  margin-bottom: 30px;
-  text-align: center;
-}
-
-.intro-question h2 {
-  margin-bottom: 15px;
-}
-
-.aviation-reference {
-  border-left: 3px solid var(--vermelho);
-  padding: 6px 0 6px 22px;
-  margin: 35px 0;
-}
-
-.aviation-reference p {
-  margin: 0 0 15px;
-}
-
-.aviation-reference p:last-child {
-  margin-bottom: 0;
-}
-
-.aviation-question {
-  font-family: Georgia, serif;
-  font-size: clamp(22px, 4vw, 29px);
-  color: var(--verde);
-  line-height: 1.35;
-}
-
-/* LINHA DAS QUATRO ZONAS */
-
-.zone-line {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
-  margin: 35px 0 12px;
-}
-
-.zone-line div {
-  height: 11px;
-  border-radius: 5px;
-}
-
-.green {
-  background: #477e66;
-}
-
-.yellow {
-  background: #d5ba68;
-}
-
-.orange {
-  background: #dc9555;
-}
-
-.red {
-  background: #b84747;
-}
-
-.zone-labels {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
-  text-align: center;
-  font-size: 11px;
-  font-weight: bold;
-  letter-spacing: 0.5px;
-  margin-bottom: 30px;
-}
-
-/* EXPLICAÇÃO DAS LINHAS */
-
-.zone {
-  padding: 22px 0;
-  border-bottom: 1px solid #e6e5dd;
-}
-
-.zone:last-child {
-  border-bottom: 0;
-}
-
-.zone-title {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  font-size: 14px;
-  font-weight: bold;
-  letter-spacing: 0.3px;
-}
-
-.zone-dot {
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  flex-shrink: 0;
-}
-
-.zone p {
-  margin: 10px 0 0 25px;
-  font-size: 15px;
-}
-
-/* DESTAQUE DA LINHA VERMELHA */
-
-.redline-section {
-  margin: 45px 0;
-  padding: 35px 0;
-  text-align: center;
-}
-
-.redline-title {
-  font-size: 12px;
-  font-weight: bold;
-  letter-spacing: 2px;
-  color: var(--vermelho);
-  margin-bottom: 22px;
-}
-
-.redline-visual {
-  position: relative;
-  height: 4px;
-  width: 100%;
-  background: #e9d4d4;
-  margin: 25px auto 30px;
-  overflow: hidden;
-}
-
-.redline-visual::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  height: 100%;
-  width: 100%;
-  background: var(--vermelho);
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: drawRedLine 1.5s ease forwards;
-}
-
-@keyframes drawRedLine {
-  to {
-    transform: scaleX(1);
-  }
-}
-
-.redline-section h2 {
-  font-size: clamp(27px, 5vw, 36px);
-  margin-bottom: 18px;
-}
-
-.redline-section p {
-  font-size: 17px;
-}
-
-/* CHAMADA PARA O CHECKLIST */
-
-.cta-box {
-  background: #eaf0e8;
-  padding: 30px 24px;
-  border-radius: 16px;
-  margin-top: 35px;
-  text-align: center;
-}
-
-.cta-box h2 {
-  margin-top: 0;
-}
-
-.cta-box p {
-  margin-bottom: 20px;
-}
-
-/* PERGUNTAS */
-
-.progress {
-  height: 7px;
-  background: #dfe5db;
-  border-radius: 20px;
-  overflow: hidden;
-}
-
-#bar {
-  height: 100%;
-  background: var(--verde);
-  width: 0;
-  transition: width 0.2s;
-}
-
-.question {
-  display: flex;
-  gap: 13px;
-  padding: 17px 0;
-  border-bottom: 1px solid #e8e8e3;
-  cursor: pointer;
-}
-
-.question:last-child {
-  border: 0;
-}
-
-.question input {
-  width: 22px;
-  height: 22px;
-  accent-color: var(--verde);
-  flex-shrink: 0;
-}
-
-/* PERGUNTA FINAL */
-
-.field {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #cbd5cb;
-  border-radius: 9px;
-  font-size: 16px;
-}
-
-.option {
-  display: block;
-  padding: 15px;
-  background: white;
-  border: 1px solid #e3e5df;
-  border-radius: 9px;
-  margin: 10px 0;
-  cursor: pointer;
-}
-
-.option input {
-  accent-color: var(--verde);
-  margin-right: 8px;
-}
-
-.actions {
-  display: flex;
-  gap: 12px;
-}
-
-.actions button {
-  flex: 1;
-}
-
-.error {
-  color: #a03232;
-  font-size: 14px;
-}
-
-/* TELA DE CONCLUSÃO */
-
-.done-header {
-  text-align: center;
-  margin-bottom: 35px;
-}
-
-.check-icon {
-  width: 65px;
-  height: 65px;
-  border: 2px solid var(--verde);
-  border-radius: 50%;
-  margin: 0 auto 22px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--verde);
-  font-size: 32px;
-}
-
-.result-question {
-  text-align: center;
-  background: #fffdf8;
-  border: 1px solid var(--borda);
-  border-radius: 16px;
-  padding: 30px 24px;
-  margin: 30px 0;
-}
-
-.result-question h2 {
-  margin-top: 0;
-}
-
-.result-question .zone-line {
-  margin: 25px 0 12px;
-}
-
-.final-message {
-  background: #eaf0e8;
-  border-radius: 12px;
-  padding: 25px;
-  margin: 30px 0;
-  text-align: center;
-}
-
-.final-message p {
-  margin-bottom: 15px;
-}
-
-.final-message p:last-child {
-  margin-bottom: 0;
-}
-
-.privacy-note {
-  font-size: 13px;
-  color: #657168;
-  text-align: center;
-  margin-top: 15px;
-}
-
-/* CELULAR */
-
-@media (max-width: 520px) {
-  .actions {
-    flex-direction: column;
-  }
-
-  .card {
-    padding: 19px;
-  }
-
-  .brand {
-    letter-spacing: 1.3px;
-  }
-
-  .zone-labels {
-    font-size: 10px;
-  }
-
-  .cta-box {
-    padding: 25px 18px;
-  }
-}
-
-/* ACESSIBILIDADE */
-
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    transition-duration: 0.01ms !important;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#f7f3e9">
+  <title>A Linha Vermelha do Casamento | O SEU LUGAR®</title>
+
+  <style>
+    :root {
+      --verde: #183d32;
+      --creme: #f7f3e9;
+      --texto: #27332c;
+      --borda: #e5e3db;
+      --vermelho: #ff2028;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--creme);
+      color: var(--texto);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.65;
+    }
+
+    main {
+      max-width: 740px;
+      margin: auto;
+      padding: 28px 18px 65px;
+    }
+
+    .brand {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--verde);
+      font-weight: bold;
+      margin-bottom: 45px;
+    }
+
+    h1, h2, h3 {
+      font-family: Georgia, "Times New Roman", serif;
+      color: var(--verde);
+      line-height: 1.2;
+    }
+
+    h1 {
+      font-size: clamp(40px, 8vw, 65px);
+      font-weight: normal;
+      margin: 0;
+    }
+
+    h2 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: normal;
+    }
+
+    h3 {
+      font-size: 23px;
+      font-weight: normal;
+    }
+
+    p { font-size: 16px; }
+
+    strong { color: var(--verde); }
+
+    .lead {
+      font-size: 20px;
+      line-height: 1.5;
+    }
+
+    .muted {
+      color: #657168;
+      font-size: 14px;
+    }
+
+    .center { text-align: center; }
+
+    .hidden { display: none !important; }
+
+    /* FAIXA VERMELHA ABAIXO DO TÍTULO */
+
+    .title-red-stripe {
+      display: block;
+      width: 100%;
+      height: 22px;
+      background: var(--vermelho);
+      margin: 22px 0 32px;
+      border-radius: 2px;
+    }
+
+    button {
+      display: block;
+      width: 100%;
+      background: var(--verde);
+      color: #fff;
+      border: 0;
+      border-radius: 9px;
+      padding: 18px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: background .2s, transform .2s;
+    }
+
+    button:hover {
+      background: #285746;
+      transform: translateY(-1px);
+    }
+
+    button.secondary {
+      background: #e0e8df;
+      color: var(--verde);
+    }
+
+    button.secondary:hover {
+      background: #d1ded0;
+    }
+
+    button:focus-visible,
+    input:focus-visible {
+      outline: 3px solid #b28a43;
+      outline-offset: 3px;
+    }
+
+    .card {
+      background: #fffdf8;
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      padding: 25px;
+      margin: 24px 0;
+    }
+
+    /* ABERTURA */
+
+    .opening {
+      margin-bottom: 35px;
+    }
+
+    .opening p {
+      margin: 16px 0;
+    }
+
+    /* AS QUATRO LINHAS */
+
+    .line-colors {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      margin: 30px 0 12px;
+    }
+
+    .line-colors div {
+      height: 11px;
+      border-radius: 5px;
+    }
+
+    .green { background: #477e66; }
+    .yellow { background: #d5ba68; }
+    .orange { background: #dc9555; }
+    .red { background: #b84747; }
+
+    .line-labels {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      text-align: center;
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: .5px;
+      margin-bottom: 30px;
+    }
+
+    .line-item {
+      padding: 19px 0;
+      border-bottom: 1px solid #e6e5dd;
+    }
+
+    .line-item:last-child {
+      border-bottom: 0;
+    }
+
+    .line-title {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      font-size: 14px;
+      font-weight: bold;
+      letter-spacing: .3px;
+    }
+
+    .line-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .line-item p {
+      margin: 10px 0 0 25px;
+      font-size: 15px;
+    }
+
+    /* DESTAQUE DA LINHA VERMELHA */
+
+    .redline-section {
+      margin: 35px 0;
+      padding: 25px 0;
+      text-align: center;
+    }
+
+    .redline-title {
+      font-size: 12px;
+      font-weight: bold;
+      letter-spacing: 2px;
+      color: #b32d35;
+      margin-bottom: 22px;
+    }
+
+    .redline-visual {
+      position: relative;
+      height: 4px;
+      width: 100%;
+      background: #e9d4d4;
+      margin: 25px auto 30px;
+      overflow: hidden;
+    }
+
+    .redline-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: var(--vermelho);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: drawRedLine 1.5s ease forwards;
+    }
+
+    @keyframes drawRedLine {
+      to { transform: scaleX(1); }
+    }
+
+    .redline-section h2 {
+      font-size: clamp(27px, 5vw, 36px);
+      margin-bottom: 18px;
+    }
+
+    .redline-section p {
+      font-size: 17px;
+    }
+
+    /* CHAMADA PARA COMEÇAR */
+
+    .cta-box {
+      background: #eaf0e8;
+      padding: 30px 24px;
+      border-radius: 16px;
+      margin-top: 35px;
+      text-align: center;
+    }
+
+    .cta-box h2 { margin-top: 0; }
+
+    .cta-box p { margin-bottom: 20px; }
+
+    /* CHECKLIST */
+
+    .progress {
+      height: 7px;
+      background: #dfe5db;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+
+    #bar {
+      height: 100%;
+      background: var(--verde);
+      width: 0;
+      transition: width .2s;
+    }
+
+    .question {
+      display: flex;
+      gap: 13px;
+      padding: 17px 0;
+      border-bottom: 1px solid #e8e8e3;
+      cursor: pointer;
+    }
+
+    .question:last-child { border: 0; }
+
+    .question input {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--verde);
+      flex-shrink: 0;
+    }
+
+    /* PERGUNTA FINAL */
+
+    .field {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #cbd5cb;
+      border-radius: 9px;
+      font-size: 16px;
+    }
+
+    .option {
+      display: block;
+      padding: 15px;
+      background: white;
+      border: 1px solid #e3e5df;
+      border-radius: 9px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
+
+    .option input {
+      accent-color: var(--verde);
+      margin-right: 8px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    .actions button { flex: 1; }
+
+    .error {
+      color: #a03232;
+      font-size: 14px;
+    }
+
+    /* TELA DE CONCLUSÃO */
+
+    .done-header {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .check-icon {
+      width: 65px;
+      height: 65px;
+      border: 2px solid var(--verde);
+      border-radius: 50%;
+      margin: 0 auto 22px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--verde);
+      font-size: 32px;
+    }
+
+    .result-question {
+      text-align: center;
+      background: #fffdf8;
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      padding: 30px 24px;
+      margin: 30px 0;
+    }
+
+    .result-question h2 { margin-top: 0; }
+
+    .result-question .line-colors {
+      margin: 25px 0 12px;
+    }
+
+    .final-message {
+      background: #eaf0e8;
+      border-radius: 12px;
+      padding: 25px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .final-message p { margin-bottom: 15px; }
+
+    .final-message p:last-child { margin-bottom: 0; }
+
+    .privacy-note {
+      font-size: 13px;
+      color: #657168;
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    @media (max-width: 520px) {
+      .actions { flex-direction: column; }
+      .card { padding: 19px; }
+      .brand { letter-spacing: 1.3px; }
+      .line-labels { font-size: 10px; }
+      .cta-box { padding: 25px 18px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
 <main>
 
-<div class="brand">
-  O SEU LUGAR® · RELACIONAMENTOS CONSCIENTES
-</div>
-
-<!-- ================================= -->
-<!-- PRIMEIRA PÁGINA -->
-<!-- ================================= -->
-
-<section id="intro">
-
-  <h1>
-    A Linha Vermelha do Casamento
-  </h1>
-
-  <p class="lead">
-    <strong>
-      Antes de chegar ao limite, seu relacionamento
-      dá sinais. Você está conseguindo enxergá-los?
-    </strong>
-  </p>
-
-  <p>
-    Um casamento não se desgasta de um dia para o outro.
-  </p>
-
-  <p>
-    As conversas começam a diminuir.
-    Os mesmos conflitos se repetem.
-    O carinho deixa de ser espontâneo.
-    E, mesmo vivendo juntos, vocês começam
-    a se sentir emocionalmente distantes.
-  </p>
-
-  <!-- ANALOGIA COM A AVIAÇÃO -->
-
-  <div class="aviation-reference">
-
-    <p>
-      Na aviação, os pilotos acompanham sinais
-      e informações para tomar decisões
-      durante o voo.
-    </p>
-
-    <p class="aviation-question">
-      Mas, no casamento, quantos sinais você
-      precisa ignorar até perceber que algo
-      precisa mudar?
-    </p>
-
+  <div class="brand">
+    O SEU LUGAR® · RELACIONAMENTOS CONSCIENTES
   </div>
 
-  <p>
-    <strong>A Linha Vermelha do Casamento</strong>
-    foi criada para ajudar você a reconhecer
-    esses sinais e compreender o nível de
-    atenção que seu relacionamento merece.
-  </p>
+  <!-- PÁGINA INICIAL -->
 
-  <div class="intro-question">
+  <section id="intro">
 
-    <h2>
-      Em qual LINHA está o seu casamento?
-    </h2>
+    <h1>A Linha Vermelha do Casamento</h1>
 
-    <p>
-      Existem sinais que ajudam a compreender
-      como está a comunicação, a intimidade,
-      a parceria e a conexão emocional
-      entre vocês.
-    </p>
+    <div class="title-red-stripe" aria-hidden="true"></div>
 
-  </div>
-
-  <!-- ================================= -->
-  <!-- AS QUATRO LINHAS -->
-  <!-- ================================= -->
-
-  <div class="card">
-
-    <h2 class="center">
-      Conheça as quatro LINHAS do relacionamento
-    </h2>
-
-    <p class="center">
-      A Linha Vermelha do Casamento é um checklist
-      com 20 afirmações que ajudam você a reconhecer
-      sinais de desgaste na comunicação, nos conflitos,
-      na intimidade, na parceria e na forma como
-      enxerga o futuro de vocês.
-    </p>
-
-    <p class="center">
-      A partir das respostas, os sinais são
-      organizados em quatro LINHAS de atenção.
-    </p>
-
-    <div class="zone-line" aria-hidden="true">
-      <div class="green"></div>
-      <div class="yellow"></div>
-      <div class="orange"></div>
-      <div class="red"></div>
-    </div>
-
-    <div class="zone-labels">
-      <span>VERDE</span>
-      <span>AMARELA</span>
-      <span>LARANJA</span>
-      <span>VERMELHA</span>
-    </div>
-
-    <!-- LINHA VERDE -->
-
-    <div class="zone">
-
-      <div class="zone-title">
-        <span class="zone-dot green"></span>
-        LINHA VERDE — CONEXÃO E MANUTENÇÃO
-      </div>
+    <div class="opening">
+      <p class="lead">
+        <strong>
+          Antes de chegar ao limite, seu relacionamento dá sinais.
+          Você está conseguindo enxergá-los?
+        </strong>
+      </p>
 
       <p>
-        Poucos sinais de desgaste foram identificados.
-        É o momento de continuar fortalecendo
-        a comunicação, o carinho e a parceria.
+        Um casamento não se desgasta de um dia para o outro.
+        As conversas diminuem, os conflitos se repetem,
+        o carinho se torna menos frequente e o distanciamento
+        emocional começa a fazer parte da rotina.
+      </p>
+
+      <p>
+        A Linha Vermelha do Casamento ajuda você a identificar
+        esses sinais e reconhecer o nível de atenção que
+        seu relacionamento merece.
+      </p>
+    </div>
+
+    <!-- QUATRO LINHAS -->
+
+    <div class="card">
+
+      <h2 class="center">
+        As quatro linhas do relacionamento
+      </h2>
+
+      <p class="center">
+        Cada linha representa um nível de atenção
+        aos sinais de desgaste identificados.
+      </p>
+
+      <div class="line-colors" aria-hidden="true">
+        <div class="green"></div>
+        <div class="yellow"></div>
+        <div class="orange"></div>
+        <div class="red"></div>
+      </div>
+
+      <div class="line-labels">
+        <span>VERDE</span>
+        <span>AMARELA</span>
+        <span>LARANJA</span>
+        <span>VERMELHA</span>
+      </div>
+
+      <div class="line-item">
+        <div class="line-title">
+          <span class="line-dot green"></span>
+          LINHA VERDE — CONEXÃO E MANUTENÇÃO
+        </div>
+        <p>
+          Poucos sinais de desgaste.
+          É o momento de fortalecer a comunicação,
+          o carinho e a parceria.
+        </p>
+      </div>
+
+      <div class="line-item">
+        <div class="line-title">
+          <span class="line-dot yellow"></span>
+          LINHA AMARELA — SINAIS DE ALERTA
+        </div>
+        <p>
+          Algumas dificuldades já estão presentes.
+          O relacionamento precisa de mais atenção.
+        </p>
+      </div>
+
+      <div class="line-item">
+        <div class="line-title">
+          <span class="line-dot orange"></span>
+          LINHA LARANJA — DESGASTE EMOCIONAL
+        </div>
+        <p>
+          Diferentes áreas do relacionamento
+          apresentam sinais de desgaste e distanciamento.
+        </p>
+      </div>
+
+      <div class="line-item">
+        <div class="line-title">
+          <span class="line-dot red"></span>
+          LINHA VERMELHA — ATENÇÃO PRIORITÁRIA
+        </div>
+        <p>
+          Muitos sinais de desgaste estão presentes.
+          É importante compreender os padrões
+          e buscar caminhos de mudança.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- DESTAQUE -->
+
+    <div class="redline-section">
+
+      <div class="redline-title">
+        A LINHA QUE NENHUM CASAL DEVERIA IGNORAR
+      </div>
+
+      <div class="redline-visual" aria-hidden="true"></div>
+
+      <h2>
+        A Linha Vermelha não significa
+        que seu casamento acabou.
+      </h2>
+
+      <p>
+        <strong>
+          Significa que continuar ignorando
+          o que está acontecendo pode aprofundar
+          o distanciamento entre vocês.
+        </strong>
       </p>
 
     </div>
 
-    <!-- LINHA AMARELA -->
+    <!-- CTA -->
 
-    <div class="zone">
+    <div class="cta-box">
 
-      <div class="zone-title">
-        <span class="zone-dot yellow"></span>
-        LINHA AMARELA — SINAIS DE ALERTA
-      </div>
+      <h2>
+        Agora, olhe para os sinais do seu relacionamento.
+      </h2>
 
       <p>
-        Algumas dificuldades já estão presentes.
-        Conversas difíceis, conflitos recorrentes
-        ou falta de conexão podem indicar que
-        o relacionamento precisa de mais atenção.
+        Responda às 20 afirmações e descubra
+        quais sinais estão presentes no seu casamento.
+      </p>
+
+      <button type="button" id="start">
+        DESCOBRIR EM QUAL LINHA ESTÁ MEU CASAMENTO
+      </button>
+
+      <p class="muted">
+        Leva aproximadamente 3 minutos.
+        Ao concluir, você poderá enviar suas respostas
+        para receber uma devolutiva individual.
       </p>
 
     </div>
 
-    <!-- LINHA LARANJA -->
+  </section>
 
-    <div class="zone">
+  <!-- CHECKLIST -->
 
-      <div class="zone-title">
-        <span class="zone-dot orange"></span>
-        LINHA LARANJA — DESGASTE EMOCIONAL
-      </div>
+  <section id="quiz" class="hidden">
 
-      <p>
-        Diferentes áreas do relacionamento
-        apresentam sinais de desgaste.
-        Os conflitos, o distanciamento e a falta
-        de conexão podem estar se tornando
-        parte da rotina.
-      </p>
+    <p class="muted" id="stepLabel"></p>
 
+    <div class="progress" aria-hidden="true">
+      <div id="bar"></div>
     </div>
 
-    <!-- LINHA VERMELHA -->
-
-    <div class="zone">
-
-      <div class="zone-title">
-        <span class="zone-dot red"></span>
-        LINHA VERMELHA — ATENÇÃO PRIORITÁRIA
-      </div>
-
-      <p>
-        Muitos sinais de desgaste estão presentes
-        ao mesmo tempo.
-        É importante compreender os padrões
-        que estão afetando o relacionamento
-        e buscar caminhos de mudança.
-      </p>
-
-    </div>
-
-  </div>
-
-  <!-- ================================= -->
-  <!-- DESTAQUE DA LINHA VERMELHA -->
-  <!-- ================================= -->
-
-  <div class="redline-section">
-
-    <div class="redline-title">
-      A LINHA QUE NENHUM CASAL DEVERIA IGNORAR
-    </div>
-
-    <div class="redline-visual" aria-hidden="true"></div>
-
-    <h2>
-      A Linha Vermelha não significa
-      que seu casamento acabou.
-    </h2>
-
-    <p>
-      <strong>
-        Significa que continuar ignorando
-        o que está acontecendo pode aprofundar
-        o distanciamento entre vocês.
-      </strong>
-    </p>
-
-  </div>
-
-  <!-- ================================= -->
-  <!-- CHAMADA PARA COMEÇAR -->
-  <!-- ================================= -->
-
-  <div class="cta-box">
-
-    <h2>
-      Você sabe em qual zona está seu casamento hoje?
-    </h2>
-
-    <p>
-      Talvez você esteja vivendo os primeiros
-      sinais de desgaste.
-    </p>
-
-    <p>
-      Talvez o distanciamento já esteja afetando
-      diferentes áreas da relação.
-    </p>
-
-    <p>
-      Ou talvez existam dificuldades que você
-      ainda não conseguiu reconhecer.
-    </p>
-
-    <p>
-      <strong>
-        O que você não consegue identificar,
-        dificilmente consegue transformar.
-      </strong>
-    </p>
-
-    <p>
-      Responda às 20 afirmações e identifique
-      os sinais presentes no seu relacionamento.
-    </p>
-
-    <button type="button" id="start">
-      DESCOBRIR EM QUAL LINHA ESTÁ MEU CASAMENTO
-    </button>
+    <h2 id="stepTitle"></h2>
 
     <p class="muted">
-      Leva aproximadamente 3 minutos.
-      Ao concluir, você poderá enviar suas respostas
-      para receber uma devolutiva individual.
+      Pense nos últimos três meses.
+      Marque todas as situações que fazem parte da sua realidade.
+      Se nenhuma se aplicar, avance sem marcar.
     </p>
 
-  </div>
+    <div class="card" id="questions"></div>
 
-</section>
-
-<!-- ================================= -->
-<!-- CHECKLIST -->
-<!-- ================================= -->
-
-<section id="quiz" class="hidden">
-
-  <p class="muted" id="stepLabel"></p>
-
-  <div class="progress">
-    <div id="bar"></div>
-  </div>
-
-  <h2 id="stepTitle"></h2>
-
-  <p class="muted">
-    Pense nos últimos três meses.
-    Marque todas as situações que fazem
-    parte da sua realidade.
-    Se nenhuma se aplicar, avance sem marcar.
-  </p>
-
-  <div class="card" id="questions"></div>
-
-  <div class="actions">
-
-    <button
-      type="button"
-      class="secondary"
-      id="prev">
-      VOLTAR
-    </button>
-
-    <button
-      type="button"
-      id="next">
-      CONTINUAR
-    </button>
-
-  </div>
-
-</section>
-
-<!-- ================================= -->
-<!-- PERGUNTA SOBRE O FUTURO -->
-<!-- ================================= -->
-
-<section id="closing" class="hidden">
-
-  <h2>
-    Como você enxerga o futuro de vocês?
-  </h2>
-
-  <p>
-    Se o relacionamento continuar exatamente
-    como está hoje, como você imagina
-    vocês daqui a cinco anos?
-  </p>
-
-  <label class="option">
-
-    <input
-      type="radio"
-      name="future"
-      value="Acredito que estaremos juntos e felizes">
-
-    Acredito que estaremos juntos e felizes.
-
-  </label>
-
-  <label class="option">
-
-    <input
-      type="radio"
-      name="future"
-      value="Tenho dúvidas">
-
-    Tenho dúvidas.
-
-  </label>
-
-  <label class="option">
-
-    <input
-      type="radio"
-      name="future"
-      value="Não acredito que estaremos felizes como casal">
-
-    Não acredito que estaremos felizes como casal.
-
-  </label>
-
-  <label class="option">
-
-    <input
-      type="radio"
-      name="future"
-      value="Não consigo imaginar nosso futuro juntos">
-
-    Não consigo imaginar nosso futuro juntos.
-
-  </label>
-
-  <h2>
-    Seu checklist está quase pronto!
-  </h2>
-
-  <p>
-    Como podemos chamar você?
-  </p>
-
-  <input
-    class="field"
-    id="name"
-    type="text"
-    placeholder="Seu primeiro nome"
-    maxlength="70"
-    autocomplete="given-name">
-
-  <p class="muted">
-    Ao clicar em FINALIZAR, o WhatsApp da Alinne
-    será aberto com suas respostas preenchidas.
-    Confira a mensagem e toque em enviar.
-  </p>
-
-  <p class="error" id="error" role="alert"></p>
-
-  <div class="actions">
-
-    <button
-      type="button"
-      class="secondary"
-      id="back">
-      VOLTAR
-    </button>
-
-    <button
-      type="button"
-      id="finish">
-      FINALIZAR
-    </button>
-
-  </div>
-
-</section>
-
-<!-- ================================= -->
-<!-- TELA FINAL -->
-<!-- ================================= -->
-
-<section id="done" class="hidden">
-
-  <div class="done-header">
-
-    <div class="check-icon">
-      ✓
+    <div class="actions">
+      <button type="button" class="secondary" id="prev">
+        VOLTAR
+      </button>
+      <button type="button" id="next">
+        CONTINUAR
+      </button>
     </div>
 
-    <h2>
-      Seu checklist está concluído!
-    </h2>
+  </section>
+
+  <!-- PERGUNTA SOBRE O FUTURO -->
+
+  <section id="closing" class="hidden">
+
+    <h2>Como você enxerga o futuro de vocês?</h2>
 
     <p>
-      Você acabou de olhar para 20 situações
-      que ajudam a compreender como está
-      a comunicação, a conexão emocional,
-      a intimidade e a parceria no seu casamento.
+      Se o relacionamento continuar exatamente como está hoje,
+      como você imagina vocês daqui a cinco anos?
     </p>
 
-    <p>
-      <strong>
-        Agora vem a parte mais importante:
-        compreender o que suas respostas significam.
-      </strong>
+    <label class="option">
+      <input
+        type="radio"
+        name="future"
+        value="Acredito que estaremos juntos e felizes">
+      Acredito que estaremos juntos e felizes.
+    </label>
+
+    <label class="option">
+      <input
+        type="radio"
+        name="future"
+        value="Tenho dúvidas">
+      Tenho dúvidas.
+    </label>
+
+    <label class="option">
+      <input
+        type="radio"
+        name="future"
+        value="Não acredito que estaremos felizes como casal">
+      Não acredito que estaremos felizes como casal.
+    </label>
+
+    <label class="option">
+      <input
+        type="radio"
+        name="future"
+        value="Não consigo imaginar nosso futuro juntos">
+      Não consigo imaginar nosso futuro juntos.
+    </label>
+
+    <h2>Seu checklist está quase pronto!</h2>
+
+    <p>Como podemos chamar você?</p>
+
+    <input
+      class="field"
+      id="name"
+      type="text"
+      placeholder="Seu primeiro nome"
+      maxlength="70"
+      autocomplete="given-name">
+
+    <p class="muted">
+      Ao clicar em FINALIZAR, o WhatsApp da Alinne
+      será aberto com suas respostas preenchidas.
+      Confira a mensagem e toque em enviar.
     </p>
 
-  </div>
+    <p class="error" id="error" role="alert"></p>
 
-  <!-- QUATRO LINHAS SEM REVELAR O RESULTADO -->
-
-  <div class="result-question">
-
-    <h2>
-      LINHA Verde, Amarela, Laranja ou Linha Vermelha?
-    </h2>
-
-    <div class="zone-line" aria-hidden="true">
-      <div class="green"></div>
-      <div class="yellow"></div>
-      <div class="orange"></div>
-      <div class="red"></div>
+    <div class="actions">
+      <button type="button" class="secondary" id="back">
+        VOLTAR
+      </button>
+      <button type="button" id="finish">
+        FINALIZAR
+      </button>
     </div>
 
-    <div class="zone-labels">
-      <span>VERDE</span>
-      <span>AMARELA</span>
-      <span>LARANJA</span>
-      <span>VERMELHA</span>
+  </section>
+
+  <!-- CONCLUSÃO -->
+
+  <section id="done" class="hidden">
+
+    <div class="done-header">
+
+      <div class="check-icon" aria-hidden="true">✓</div>
+
+      <h2>Seu checklist está concluído!</h2>
+
+      <p>
+        Você acabou de olhar para 20 situações
+        que ajudam a compreender a comunicação,
+        a conexão emocional, a intimidade
+        e a parceria no seu casamento.
+      </p>
+
+      <p>
+        <strong>
+          Agora vem a parte mais importante:
+          compreender o que suas respostas significam.
+        </strong>
+      </p>
+
     </div>
 
-    <h3>
-      Em qual delas está o seu casamento?
-    </h3>
+    <div class="result-question">
 
-    <p>
-      A quantidade de sinais identificados
-      ajuda a compreender o nível de atenção
-      que o relacionamento merece.
+      <h2>
+        Linha Verde, Amarela, Laranja ou Vermelha?
+      </h2>
+
+      <div class="line-colors" aria-hidden="true">
+        <div class="green"></div>
+        <div class="yellow"></div>
+        <div class="orange"></div>
+        <div class="red"></div>
+      </div>
+
+      <div class="line-labels">
+        <span>VERDE</span>
+        <span>AMARELA</span>
+        <span>LARANJA</span>
+        <span>VERMELHA</span>
+      </div>
+
+      <h3>Em qual delas está o seu casamento?</h3>
+
+      <p>
+        A quantidade de sinais identificados
+        ajuda a compreender o nível de atenção
+        que o relacionamento merece.
+      </p>
+
+    </div>
+
+    <div class="final-message">
+
+      <h3>Seu próximo passo</h3>
+
+      <p>
+        <strong>
+          Agora é só aguardar sua devolutiva individual!
+        </strong>
+      </p>
+
+      <p>
+        Depois de enviar suas respostas pelo WhatsApp,
+        a Alinne entrará em contato com você
+        na mesma conversa para apresentar
+        sua análise individual.
+      </p>
+
+      <p>
+        Ela vai explicar em qual linha seu casamento
+        se encontra e ajudar você a compreender
+        os sinais que merecem atenção.
+      </p>
+
+      <p>
+        <strong>
+          Sua devolutiva será feita individualmente,
+          considerando as respostas que você compartilhou.
+        </strong>
+      </p>
+
+    </div>
+
+    <button type="button" id="send" class="secondary">
+      AINDA NÃO ENVIEI MINHAS RESPOSTAS
+    </button>
+
+    <p class="privacy-note">
+      Se você já enviou suas respostas pelo WhatsApp,
+      não precisa enviar novamente.
+      É só aguardar o contato da Alinne.
     </p>
 
-  </div>
-
-  <!-- NOVA MENSAGEM DE CONCLUSÃO -->
-
-  <div class="final-message">
-
-    <h3>
-      Seu próximo passo
-    </h3>
-
-    <p>
-      <strong>
-        Agora é só aguardar sua devolutiva individual!
-      </strong>
-    </p>
-
-    <p>
-      Depois de enviar suas respostas pelo WhatsApp,
-      a Alinne entrará em contato com você
-      na mesma conversa para apresentar
-      sua análise individual.
-    </p>
-
-    <p>
-      Ela vai explicar em qual LINHA seu casamento
-      se encontra e ajudar você a compreender
-      os sinais que merecem atenção.
-    </p>
-
-    <p>
-      <strong>
-        Sua devolutiva será feita individualmente,
-        considerando as respostas que você compartilhou.
-      </strong>
-    </p>
-
-  </div>
-
-  <!-- BOTÃO PARA QUEM AINDA NÃO ENVIOU -->
-
-  <button
-    type="button"
-    id="send"
-    class="secondary">
-    AINDA NÃO ENVIEI MINHAS RESPOSTAS
-  </button>
-
-  <p class="privacy-note">
-    Se você já enviou suas respostas pelo WhatsApp,
-    não precisa enviar novamente.
-    É só aguardar o contato da Alinne.
-  </p>
-
-</section>
+  </section>
 
 </main>
 
-<!-- ================================= -->
-<!-- JAVASCRIPT -->
-<!-- ================================= -->
-
 <script>
-
-/* WHATSAPP DA ALINNE */
-
-const WHATSAPP = "5549999728631";
-
-/* PERGUNTAS */
-
-const groups = [
-
-  {
-    title: "Comunicação e conexão",
-
-    questions: [
-
-      "Conversamos mais sobre contas, filhos e responsabilidades do que sobre nós dois.",
-
-      "Quando tento falar sobre algo que me incomoda, a conversa termina em discussão ou silêncio.",
-
-      "Sinto que meu marido não compreende o que estou vivendo emocionalmente.",
-
-      "Já deixei de compartilhar algumas coisas porque sinto que ele não me escuta."
-
-    ]
-  },
-
-  {
-    title: "Conflitos e desgaste",
-
-    questions: [
-
-      "Discutimos repetidamente pelos mesmos motivos, sem conseguir resolver.",
-
-      "Pequenas situações acabam provocando irritação ou discussões desproporcionais.",
-
-      "Um de nós prefere se afastar em vez de conversar sobre os problemas.",
-
-      "Temos dificuldade de reconhecer nossos erros e pedir desculpas."
-
-    ]
-  },
-
-  {
-    title: "Intimidade e carinho",
-
-    questions: [
-
-      "Os abraços, beijos e demonstrações espontâneas de carinho diminuíram.",
-
-      "Nossa intimidade física diminuiu e temos dificuldade de conversar sobre isso.",
-
-      "Mesmo quando estamos juntos, sinto que estamos emocionalmente distantes.",
-
-      "Raramente temos momentos de qualidade somente como casal."
-
-    ]
-  },
-
-  {
-    title: "Parceria e reconhecimento",
-
-    questions: [
-
-      "Sinto que as responsabilidades do relacionamento estão desequilibradas.",
-
-      "Tenho a sensação de que meus esforços não são reconhecidos.",
-
-      "Estamos mais preocupados em provar quem está certo do que em compreender um ao outro.",
-
-      "Sinto falta de ter meu marido como parceiro nas dificuldades."
-
-    ]
-  },
-
-  {
-    title: "Futuro do relacionamento",
-
-    questions: [
-
-      "Já me perguntei se ainda somos felizes juntos.",
-
-      "Tenho dificuldade de imaginar nosso relacionamento melhorando se continuarmos como estamos.",
-
-      "Sinto que estamos nos acostumando a viver emocionalmente separados.",
-
-      "Tenho medo de que, se nada mudar, nosso casamento acabe."
-
-    ]
-  }
-
-];
-
-/* ELEMENTOS */
-
-const $ = id => document.getElementById(id);
-
-let step = 0;
-
-const selected = new Set();
-
-let message = "";
-
-/*
-  Guarda temporariamente a tela de conclusão
-  para que ela continue disponível caso
-  o navegador recarregue ao voltar do WhatsApp.
-*/
-
-const STORAGE_KEY = "linha_vermelha_conclusao_v1";
-
-/* TROCAR TELAS */
-
-function show(id) {
-
-  ["intro", "quiz", "closing", "done"].forEach(s => {
-
-    $(s).classList.toggle("hidden", s !== id);
-
-  });
-
-  window.scrollTo(0, 0);
-
-}
-
-/* MOSTRAR PERGUNTAS */
-
-function render() {
-
-  const group = groups[step];
-
-  $("stepLabel").textContent =
-    "Etapa " + (step + 1) + " de 5";
-
-  $("stepTitle").textContent =
-    group.title;
-
-  $("bar").style.width =
-    ((step + 1) * 20) + "%";
-
-  $("questions").innerHTML = "";
-
-  group.questions.forEach((question, i) => {
-
-    const index = step * 4 + i;
-
-    const label = document.createElement("label");
-
-    label.className = "question";
-
-    const checkbox = document.createElement("input");
-
-    checkbox.type = "checkbox";
-
-    checkbox.checked = selected.has(index);
-
-    checkbox.addEventListener("change", () => {
-
-      if (checkbox.checked) {
-        selected.add(index);
-      } else {
-        selected.delete(index);
-      }
-
+  "use strict";
+
+  /* WHATSAPP DA ALINNE */
+  const WHATSAPP = "5549999728631";
+
+  /* PERGUNTAS ORIGINAIS */
+
+  const groups = [
+    {
+      title: "Comunicação e conexão",
+      questions: [
+        "Conversamos mais sobre contas, filhos e responsabilidades do que sobre nós dois.",
+        "Quando tento falar sobre algo que me incomoda, a conversa termina em discussão ou silêncio.",
+        "Sinto que meu marido não compreende o que estou vivendo emocionalmente.",
+        "Já deixei de compartilhar algumas coisas porque sinto que ele não me escuta."
+      ]
+    },
+    {
+      title: "Conflitos e desgaste",
+      questions: [
+        "Discutimos repetidamente pelos mesmos motivos, sem conseguir resolver.",
+        "Pequenas situações acabam provocando irritação ou discussões desproporcionais.",
+        "Um de nós prefere se afastar em vez de conversar sobre os problemas.",
+        "Temos dificuldade de reconhecer nossos erros e pedir desculpas."
+      ]
+    },
+    {
+      title: "Intimidade e carinho",
+      questions: [
+        "Os abraços, beijos e demonstrações espontâneas de carinho diminuíram.",
+        "Nossa intimidade física diminuiu e temos dificuldade de conversar sobre isso.",
+        "Mesmo quando estamos juntos, sinto que estamos emocionalmente distantes.",
+        "Raramente temos momentos de qualidade somente como casal."
+      ]
+    },
+    {
+      title: "Parceria e reconhecimento",
+      questions: [
+        "Sinto que as responsabilidades do relacionamento estão desequilibradas.",
+        "Tenho a sensação de que meus esforços não são reconhecidos.",
+        "Estamos mais preocupados em provar quem está certo do que em compreender um ao outro.",
+        "Sinto falta de ter meu marido como parceiro nas dificuldades."
+      ]
+    },
+    {
+      title: "Futuro do relacionamento",
+      questions: [
+        "Já me perguntei se ainda somos felizes juntos.",
+        "Tenho dificuldade de imaginar nosso relacionamento melhorando se continuarmos como estamos.",
+        "Sinto que estamos nos acostumando a viver emocionalmente separados.",
+        "Tenho medo de que, se nada mudar, nosso casamento acabe."
+      ]
+    }
+  ];
+
+  const $ = id => document.getElementById(id);
+
+  let step = 0;
+  let message = "";
+
+  const selected = new Set();
+  const STORAGE_KEY = "linha_vermelha_conclusao_v1";
+
+  /* NAVEGAÇÃO ENTRE TELAS */
+
+  function show(id) {
+    ["intro", "quiz", "closing", "done"].forEach(section => {
+      $(section).classList.toggle("hidden", section !== id);
     });
 
-    const span = document.createElement("span");
-
-    span.textContent =
-      (index + 1) + ". " + question;
-
-    label.append(checkbox, span);
-
-    $("questions").appendChild(label);
-
-  });
-
-  $("prev").style.visibility =
-    step === 0 ? "hidden" : "visible";
-
-  $("next").textContent =
-    step === 4
-      ? "FINALIZAR RESPOSTAS"
-      : "CONTINUAR";
-
-}
-
-/* COMEÇAR */
-
-$("start").onclick = () => {
-
-  step = 0;
-
-  selected.clear();
-
-  message = "";
-
-  $("name").value = "";
-
-  $("error").textContent = "";
-
-  document.querySelectorAll(
-    'input[name="future"]'
-  ).forEach(r => {
-    r.checked = false;
-  });
-
-  try {
-    sessionStorage.removeItem(STORAGE_KEY);
-  } catch (e) {
-    // O checklist continua funcionando sem armazenamento.
+    window.scrollTo(0, 0);
   }
 
-  render();
+  /* MOSTRAR AS PERGUNTAS */
 
-  show("quiz");
+  function render() {
+    const group = groups[step];
 
-};
+    $("stepLabel").textContent = "Etapa " + (step + 1) + " de 5";
+    $("stepTitle").textContent = group.title;
+    $("bar").style.width = ((step + 1) * 20) + "%";
+    $("questions").innerHTML = "";
 
-/* VOLTAR */
+    group.questions.forEach((question, i) => {
+      const index = step * 4 + i;
 
-$("prev").onclick = () => {
+      const label = document.createElement("label");
+      label.className = "question";
 
-  if (step > 0) {
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = selected.has(index);
 
-    step--;
-
-    render();
-
-    show("quiz");
-
-  }
-
-};
-
-/* CONTINUAR */
-
-$("next").onclick = () => {
-
-  if (step < 4) {
-
-    step++;
-
-    render();
-
-    show("quiz");
-
-  } else {
-
-    show("closing");
-
-  }
-
-};
-
-/* VOLTAR À ÚLTIMA ETAPA */
-
-$("back").onclick = () => {
-
-  step = 4;
-
-  render();
-
-  show("quiz");
-
-};
-
-/* CRIAR LINK DO WHATSAPP */
-
-function whatsappURL() {
-
-  return (
-    "https://wa.me/" +
-    WHATSAPP +
-    "?text=" +
-    encodeURIComponent(message)
-  );
-
-}
-
-/* ABRIR WHATSAPP */
-
-function abrirWhatsApp() {
-
-  if (!message) {
-
-    alert("Finalize o checklist antes de enviar.");
-
-    return;
-
-  }
-
-  /*
-    A tela de conclusão fica preparada
-    antes de abrir o WhatsApp.
-
-    Quando a participante retornar ao site,
-    encontrará essa tela.
-  */
-
-  show("done");
-
-  /*
-    Navegação direta para o WhatsApp.
-
-    O envio da mensagem precisa ser
-    confirmado pela participante.
-  */
-
-  window.location.href = whatsappURL();
-
-}
-
-/* FINALIZAR */
-
-$("finish").onclick = () => {
-
-  const name = $("name").value.trim();
-
-  const future = document.querySelector(
-    'input[name="future"]:checked'
-  );
-
-  if (!name || !future) {
-
-    $("error").textContent =
-      "Preencha seu nome e responda à pergunta sobre o futuro.";
-
-    return;
-
-  }
-
-  $("error").textContent = "";
-
-  /* ORGANIZAR RESPOSTAS POR CATEGORIA */
-
-  const sections = groups.map((group, groupIndex) => {
-
-    const answers = group.questions
-
-      .map((question, questionIndex) => {
-
-        const index =
-          groupIndex * 4 + questionIndex;
-
-        if (!selected.has(index)) {
-          return null;
+      checkbox.addEventListener("change", () => {
+        if (checkbox.checked) {
+          selected.add(index);
+        } else {
+          selected.delete(index);
         }
+      });
 
-        return (index + 1) + ". " + question;
+      const span = document.createElement("span");
+      span.textContent = (index + 1) + ". " + question;
 
-      })
+      label.append(checkbox, span);
+      $("questions").appendChild(label);
+    });
 
-      .filter(Boolean);
-
-    return (
-
-      group.title.toUpperCase() + "\n" +
-
-      (
-        answers.length
-          ? answers.join("\n")
-          : "Nenhuma afirmação assinalada."
-      )
-
-    );
-
-  });
-
-  /* MENSAGEM DO WHATSAPP */
-
-  message =
-
-    "CHECKLIST — A LINHA VERMELHA DO CASAMENTO\n\n" +
-
-    "Olá, Alinne! Concluí o checklist e gostaria " +
-    "de receber minha devolutiva individual.\n\n" +
-
-    "NOME: " + name + "\n\n" +
-
-    "MINHAS RESPOSTAS:\n\n" +
-
-    sections.join("\n\n") +
-
-    "\n\nCOMO VEJO NOSSO FUTURO:\n" +
-
-    future.value +
-
-    "\n\nGostaria de compreender em qual zona " +
-    "está o meu casamento e o que minhas " +
-    "respostas podem indicar.";
-
-  /*
-    Salvar temporariamente a mensagem
-    para manter a tela de conclusão
-    disponível ao retornar do WhatsApp.
-  */
-
-  try {
-
-    sessionStorage.setItem(
-      STORAGE_KEY,
-      message
-    );
-
-  } catch (e) {
-    // O envio continua disponível nesta página.
+    $("prev").style.visibility = step === 0 ? "hidden" : "visible";
+    $("next").textContent =
+      step === 4 ? "FINALIZAR RESPOSTAS" : "CONTINUAR";
   }
 
-  /* ABRIR O WHATSAPP DIRETAMENTE */
+  /* INICIAR CHECKLIST */
 
-  abrirWhatsApp();
+  $("start").onclick = () => {
+    step = 0;
+    selected.clear();
+    message = "";
+    $("name").value = "";
+    $("error").textContent = "";
 
-};
+    document.querySelectorAll('input[name="future"]').forEach(radio => {
+      radio.checked = false;
+    });
 
-/* BOTÃO DE SEGURANÇA */
-
-$("send").onclick = () => {
-
-  abrirWhatsApp();
-
-};
-
-/* RESTAURAR TELA DE CONCLUSÃO */
-
-function restaurarConclusao() {
-
-  try {
-
-    const savedMessage =
-      sessionStorage.getItem(STORAGE_KEY);
-
-    if (savedMessage) {
-
-      message = savedMessage;
-
-      show("done");
-
-      return;
-
+    try {
+      sessionStorage.removeItem(STORAGE_KEY);
+    } catch (error) {
+      // O checklist funciona mesmo sem armazenamento.
     }
 
-  } catch (e) {
-    // Segue para a abertura normal.
+    render();
+    show("quiz");
+  };
+
+  /* VOLTAR ETAPA */
+
+  $("prev").onclick = () => {
+    if (step > 0) {
+      step--;
+      render();
+      show("quiz");
+    }
+  };
+
+  /* AVANÇAR ETAPA */
+
+  $("next").onclick = () => {
+    if (step < 4) {
+      step++;
+      render();
+      show("quiz");
+    } else {
+      show("closing");
+    }
+  };
+
+  /* VOLTAR DA PERGUNTA FINAL */
+
+  $("back").onclick = () => {
+    step = 4;
+    render();
+    show("quiz");
+  };
+
+  /* CRIAR LINK DO WHATSAPP */
+
+  function whatsappURL() {
+    return "https://wa.me/" + WHATSAPP +
+      "?text=" + encodeURIComponent(message);
   }
 
-  show("intro");
+  /* ABRIR WHATSAPP E DEIXAR A CONCLUSÃO PREPARADA */
 
-}
+  function abrirWhatsApp() {
+    if (!message) {
+      alert("Finalize o checklist antes de enviar.");
+      return;
+    }
 
-/*
-  Caso o navegador recarregue depois
-  de abrir o WhatsApp, a participante
-  continuará encontrando a conclusão.
-*/
+    show("done");
 
-restaurarConclusao();
+    // O WhatsApp abre com a mensagem pronta.
+    // A participante precisa confirmar o envio.
+    window.location.href = whatsappURL();
+  }
 
+  /* FINALIZAR E MONTAR A MENSAGEM */
+
+  $("finish").onclick = () => {
+    const name = $("name").value.trim();
+    const future = document.querySelector('input[name="future"]:checked');
+
+    if (!name || !future) {
+      $("error").textContent =
+        "Preencha seu nome e responda à pergunta sobre o futuro.";
+      return;
+    }
+
+    $("error").textContent = "";
+
+    const sections = groups.map((group, groupIndex) => {
+      const answers = group.questions
+        .map((question, questionIndex) => {
+          const index = groupIndex * 4 + questionIndex;
+
+          if (!selected.has(index)) {
+            return null;
+          }
+
+          return (index + 1) + ". " + question;
+        })
+        .filter(Boolean);
+
+      return group.title.toUpperCase() + "\n" +
+        (answers.length
+          ? answers.join("\n")
+          : "Nenhuma afirmação assinalada.");
+    });
+
+    message =
+      "CHECKLIST — A LINHA VERMELHA DO CASAMENTO\n\n" +
+      "Olá, Alinne! Concluí o checklist e gostaria " +
+      "de receber minha devolutiva individual.\n\n" +
+      "NOME: " + name + "\n\n" +
+      "MINHAS RESPOSTAS:\n\n" +
+      sections.join("\n\n") +
+      "\n\nCOMO VEJO NOSSO FUTURO:\n" +
+      future.value +
+      "\n\nGostaria de compreender em qual linha " +
+      "está o meu casamento e o que minhas " +
+      "respostas podem indicar.";
+
+    try {
+      sessionStorage.setItem(STORAGE_KEY, message);
+    } catch (error) {
+      // O envio continua disponível sem armazenamento.
+    }
+
+    abrirWhatsApp();
+  };
+
+  /* REABRIR WHATSAPP SE NÃO ENVIOU */
+
+  $("send").onclick = () => {
+    abrirWhatsApp();
+  };
+
+  /* RESTAURAR CONCLUSÃO AO VOLTAR */
+
+  function restaurarConclusao() {
+    try {
+      const savedMessage = sessionStorage.getItem(STORAGE_KEY);
+
+      if (savedMessage) {
+        message = savedMessage;
+        show("done");
+        return;
+      }
+    } catch (error) {
+      // Segue para a abertura normal.
+    }
+
+    show("intro");
+  }
+
+  restaurarConclusao();
 </script>
 
 </body>
 </html>
+
