@@ -1,681 +1,950 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>A Linha Vermelha do Casamento | O SEU LUGAR®</title>
+  <title>A Linha Vermelha do Casamento | O SEU LUGAR®</title>
 
-<style>
-:root {
-  --verde: #183d32;
-  --creme: #f7f3e9;
-  --texto: #27332c;
-}
+  <style>
+    :root {
+      --verde: #183d32;
+      --creme: #f7f3e9;
+      --texto: #27332c;
+      --borda: #e5e3db;
+    }
 
-* {
-  box-sizing: border-box;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-body {
-  margin: 0;
-  background: var(--creme);
-  color: var(--texto);
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
-}
+    body {
+      margin: 0;
+      background: var(--creme);
+      color: var(--texto);
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+    }
 
-main {
-  max-width: 740px;
-  margin: auto;
-  padding: 28px 18px 65px;
-}
+    main {
+      max-width: 740px;
+      margin: auto;
+      padding: 28px 18px 65px;
+    }
 
-.brand {
-  text-align: center;
-  font-size: 12px;
-  letter-spacing: 2px;
-  color: var(--verde);
-  font-weight: bold;
-  margin-bottom: 55px;
-}
+    .brand {
+      text-align: center;
+      font-size: 12px;
+      letter-spacing: 2px;
+      color: var(--verde);
+      font-weight: bold;
+      margin-bottom: 45px;
+    }
 
-h1, h2 {
-  font-family: Georgia, serif;
-  color: var(--verde);
-  line-height: 1.15;
-}
+    h1, h2, h3 {
+      font-family: Georgia, serif;
+      color: var(--verde);
+      line-height: 1.2;
+    }
 
-h1 {
-  font-size: clamp(40px, 8vw, 65px);
-  font-weight: normal;
-}
+    h1 {
+      font-size: clamp(40px, 8vw, 65px);
+      font-weight: normal;
+    }
 
-h2 {
-  font-size: clamp(28px, 5vw, 40px);
-  font-weight: normal;
-}
+    h2 {
+      font-size: clamp(28px, 5vw, 40px);
+      font-weight: normal;
+    }
 
-p {
-  font-size: 16px;
-}
+    h3 {
+      font-size: 23px;
+      font-weight: normal;
+    }
 
-.lead {
-  font-size: 19px;
-}
+    p {
+      font-size: 16px;
+    }
 
-.card {
-  background: #fffdf8;
-  border: 1px solid #e5e3db;
-  border-radius: 16px;
-  padding: 25px;
-  margin: 24px 0;
-}
+    .lead {
+      font-size: 19px;
+    }
 
-button {
-  display: block;
-  width: 100%;
-  background: var(--verde);
-  color: white;
-  border: 0;
-  border-radius: 9px;
-  padding: 17px;
-  font-size: 15px;
-  font-weight: bold;
-  cursor: pointer;
-  margin-top: 15px;
-}
+    .card {
+      background: #fffdf8;
+      border: 1px solid var(--borda);
+      border-radius: 16px;
+      padding: 25px;
+      margin: 24px 0;
+    }
 
-button.secondary {
-  background: #e0e8df;
-  color: var(--verde);
-}
+    button {
+      display: block;
+      width: 100%;
+      background: var(--verde);
+      color: white;
+      border: 0;
+      border-radius: 9px;
+      padding: 17px;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+    }
 
-button:disabled {
-  opacity: .5;
-}
+    button.secondary {
+      background: #e0e8df;
+      color: var(--verde);
+    }
 
-.hidden {
-  display: none !important;
-}
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
 
-.question {
-  display: flex;
-  gap: 13px;
-  padding: 17px 0;
-  border-bottom: 1px solid #e8e8e3;
-  cursor: pointer;
-}
+    .hidden {
+      display: none !important;
+    }
 
-.question:last-child {
-  border: 0;
-}
+    .question {
+      display: flex;
+      gap: 13px;
+      padding: 17px 0;
+      border-bottom: 1px solid #e8e8e3;
+      cursor: pointer;
+    }
 
-.question input {
-  width: 22px;
-  height: 22px;
-  accent-color: var(--verde);
-  flex-shrink: 0;
-}
+    .question:last-child {
+      border: 0;
+    }
 
-.progress {
-  height: 7px;
-  background: #dfe5db;
-  border-radius: 20px;
-  overflow: hidden;
-}
+    .question input {
+      width: 22px;
+      height: 22px;
+      accent-color: var(--verde);
+      flex-shrink: 0;
+    }
 
-#bar {
-  height: 100%;
-  background: var(--verde);
-  width: 0;
-  transition: .2s;
-}
+    .progress {
+      height: 7px;
+      background: #dfe5db;
+      border-radius: 20px;
+      overflow: hidden;
+    }
 
-.muted {
-  color: #657168;
-  font-size: 14px;
-}
+    #bar {
+      height: 100%;
+      background: var(--verde);
+      width: 0;
+      transition: width 0.2s;
+    }
 
-.field {
-  width: 100%;
-  padding: 15px;
-  border: 1px solid #cbd5cb;
-  border-radius: 9px;
-  font-size: 16px;
-}
+    .muted {
+      color: #657168;
+      font-size: 14px;
+    }
 
-.option {
-  display: block;
-  padding: 15px;
-  background: white;
-  border: 1px solid #e3e5df;
-  border-radius: 9px;
-  margin: 10px 0;
-  cursor: pointer;
-}
+    .field {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #cbd5cb;
+      border-radius: 9px;
+      font-size: 16px;
+    }
 
-.option input {
-  accent-color: var(--verde);
-}
+    .option {
+      display: block;
+      padding: 15px;
+      background: white;
+      border: 1px solid #e3e5df;
+      border-radius: 9px;
+      margin: 10px 0;
+      cursor: pointer;
+    }
 
-.actions {
-  display: flex;
-  gap: 12px;
-}
+    .option input {
+      accent-color: var(--verde);
+      margin-right: 8px;
+    }
 
-.actions button {
-  flex: 1;
-}
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
 
-.error {
-  color: #a03232;
-  font-size: 14px;
-}
+    .actions button {
+      flex: 1;
+    }
 
-@media(max-width:520px) {
-  .actions {
-    flex-direction: column;
-  }
+    .error {
+      color: #a03232;
+      font-size: 14px;
+    }
 
-  .card {
-    padding: 19px;
-  }
-}
-</style>
+    /* TELA FINAL */
+
+    .done-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .check-icon {
+      width: 58px;
+      height: 58px;
+      border: 2px solid var(--verde);
+      border-radius: 50%;
+      margin: 0 auto 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--verde);
+      font-size: 30px;
+    }
+
+    .zone-intro {
+      text-align: center;
+      margin-bottom: 22px;
+    }
+
+    .zone-scale {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 5px;
+      margin: 22px 0 30px;
+    }
+
+    .zone-scale div {
+      height: 10px;
+      border-radius: 4px;
+    }
+
+    .green { background: #477e66; }
+    .yellow { background: #d5ba68; }
+    .orange { background: #dc9555; }
+    .red { background: #b84747; }
+
+    .zone {
+      padding: 17px 0;
+      border-bottom: 1px solid #e6e5dd;
+    }
+
+    .zone:last-child {
+      border-bottom: 0;
+    }
+
+    .zone-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .zone-dot {
+      width: 13px;
+      height: 13px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .zone p {
+      font-size: 15px;
+      margin: 4px 0 0 23px;
+    }
+
+    .final-message {
+      background: #eaf0e8;
+      border-radius: 12px;
+      padding: 22px;
+      margin: 30px 0;
+      text-align: center;
+    }
+
+    .final-message p {
+      margin-bottom: 0;
+    }
+
+    .privacy-note {
+      font-size: 13px;
+      color: #657168;
+      text-align: center;
+      margin-top: 12px;
+    }
+
+    @media (max-width: 520px) {
+      .actions {
+        flex-direction: column;
+      }
+
+      .card {
+        padding: 19px;
+      }
+
+      .brand {
+        letter-spacing: 1.3px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
 <main>
 
-<div class="brand">
-  O SEU LUGAR® · RELACIONAMENTOS
-</div>
-
-<!-- TELA INICIAL -->
-
-<section id="intro">
-
-  <h1>A Linha Vermelha do Casamento</h1>
-
-  <p class="lead">
-    Seu casamento está caminhando para um distanciamento
-    emocional que vocês ainda não perceberam?
-  </p>
-
-  <p>
-    O desgaste de um relacionamento pode começar nas pequenas
-    coisas: nas conversas que diminuem, nos conflitos que se
-    repetem e no carinho que deixa de acontecer.
-  </p>
-
-  <p>
-    Responda às 20 afirmações e reconheça quais sinais
-    estão presentes no seu casamento.
-  </p>
-
-  <button type="button" id="start">
-    COMEÇAR CHECKLIST
-  </button>
-
-  <p class="muted">
-    Leva aproximadamente 3 minutos.
-  </p>
-
-</section>
-
-
-<!-- PERGUNTAS -->
-
-<section id="quiz" class="hidden">
-
-  <p class="muted" id="stepLabel"></p>
-
-  <div class="progress">
-    <div id="bar"></div>
+  <div class="brand">
+    O SEU LUGAR® · RELACIONAMENTOS CONSCIENTES
   </div>
 
-  <h2 id="stepTitle"></h2>
+  <!-- TELA INICIAL -->
 
-  <p class="muted">
-    Pense nos últimos três meses.
-    Marque todas as situações que fazem parte da sua realidade.
-    Se nenhuma se aplicar, avance sem marcar.
-  </p>
+  <section id="intro">
 
-  <div class="card" id="questions"></div>
+    <h1>A Linha Vermelha do Casamento</h1>
 
-  <div class="actions">
+    <p class="lead">
+      Seu casamento está caminhando para um distanciamento
+      emocional que vocês ainda não perceberam?
+    </p>
 
-    <button type="button" class="secondary" id="prev">
-      VOLTAR
+    <p>
+      O desgaste de um relacionamento pode começar nas
+      pequenas coisas: nas conversas que diminuem,
+      nos conflitos que se repetem e no carinho
+      que deixa de acontecer.
+    </p>
+
+    <p>
+      Responda às 20 afirmações e reconheça quais
+      sinais estão presentes no seu casamento.
+    </p>
+
+    <button type="button" id="start">
+      COMEÇAR CHECKLIST
     </button>
 
-    <button type="button" id="next">
-      CONTINUAR
+    <p class="muted">
+      Leva aproximadamente 3 minutos.
+    </p>
+
+  </section>
+
+
+  <!-- ETAPAS DO CHECKLIST -->
+
+  <section id="quiz" class="hidden">
+
+    <p class="muted" id="stepLabel"></p>
+
+    <div class="progress">
+      <div id="bar"></div>
+    </div>
+
+    <h2 id="stepTitle"></h2>
+
+    <p class="muted">
+      Pense nos últimos três meses.
+      Marque todas as situações que fazem parte da sua realidade.
+      Se nenhuma se aplicar, avance sem marcar.
+    </p>
+
+    <div class="card" id="questions"></div>
+
+    <div class="actions">
+
+      <button
+        type="button"
+        class="secondary"
+        id="prev">
+        VOLTAR
+      </button>
+
+      <button
+        type="button"
+        id="next">
+        CONTINUAR
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- PERGUNTA FINAL -->
+
+  <section id="closing" class="hidden">
+
+    <h2>Como você enxerga o futuro de vocês?</h2>
+
+    <p>
+      Se o relacionamento continuar exatamente como está hoje,
+      como você imagina vocês daqui a cinco anos?
+    </p>
+
+    <label class="option">
+      <input
+        type="radio"
+        name="future"
+        value="Acredito que estaremos juntos e felizes">
+      Acredito que estaremos juntos e felizes.
+    </label>
+
+    <label class="option">
+      <input
+        type="radio"
+        name="future"
+        value="Tenho dúvidas">
+      Tenho dúvidas.
+    </label>
+
+    <label class="option">
+      <input
+        type="radio"
+        name="future"
+        value="Não acredito que estaremos felizes como casal">
+      Não acredito que estaremos felizes como casal.
+    </label>
+
+    <label class="option">
+      <input
+        type="radio"
+        name="future"
+        value="Não consigo imaginar nosso futuro juntos">
+      Não consigo imaginar nosso futuro juntos.
+    </label>
+
+    <h2>Seu checklist está quase pronto!</h2>
+
+    <p>Como podemos chamar você?</p>
+
+    <input
+      class="field"
+      id="name"
+      type="text"
+      placeholder="Seu primeiro nome"
+      maxlength="70"
+      autocomplete="given-name">
+
+    <p class="muted">
+      Ao finalizar, você poderá enviar suas respostas
+      para receber uma devolutiva individual.
+    </p>
+
+    <p class="error" id="error" role="alert"></p>
+
+    <div class="actions">
+
+      <button
+        type="button"
+        class="secondary"
+        id="back">
+        VOLTAR
+      </button>
+
+      <button
+        type="button"
+        id="finish">
+        FINALIZAR
+      </button>
+
+    </div>
+
+  </section>
+
+
+  <!-- TELA FINAL -->
+
+  <section id="done" class="hidden">
+
+    <div class="done-header">
+
+      <div class="check-icon">✓</div>
+
+      <h2>Seu checklist está concluído!</h2>
+
+      <p>
+        Suas respostas estão prontas para serem analisadas.
+      </p>
+
+      <p>
+        Agora vem uma parte importante:
+        compreender o que esses sinais revelam
+        sobre o momento do seu casamento.
+      </p>
+
+    </div>
+
+
+    <div class="card">
+
+      <div class="zone-intro">
+
+        <h3>Em qual zona está o seu casamento?</h3>
+
+        <p>
+          Existem quatro zonas que representam
+          diferentes níveis de sinais de desgaste
+          no relacionamento.
+        </p>
+
+      </div>
+
+
+      <div class="zone-scale">
+        <div class="green"></div>
+        <div class="yellow"></div>
+        <div class="orange"></div>
+        <div class="red"></div>
+      </div>
+
+
+      <div class="zone">
+
+        <div class="zone-title">
+          <span class="zone-dot green"></span>
+          ZONA VERDE — ATENÇÃO E MANUTENÇÃO
+        </div>
+
+        <p>
+          Poucos sinais de desgaste estão presentes.
+          É um momento de continuar fortalecendo
+          o diálogo, o carinho e a parceria.
+        </p>
+
+      </div>
+
+
+      <div class="zone">
+
+        <div class="zone-title">
+          <span class="zone-dot yellow"></span>
+          ZONA AMARELA — SINAIS DE ALERTA
+        </div>
+
+        <p>
+          Algumas dificuldades já aparecem no relacionamento.
+          É importante reconhecer esses sinais e cuidar
+          deles antes que se tornem conflitos recorrentes.
+        </p>
+
+      </div>
+
+
+      <div class="zone">
+
+        <div class="zone-title">
+          <span class="zone-dot orange"></span>
+          ZONA LARANJA — DESGASTE SIGNIFICATIVO
+        </div>
+
+        <p>
+          Diferentes áreas do relacionamento apresentam
+          sinais de desgaste. A comunicação, a intimidade
+          e a parceria podem estar sendo afetadas.
+          Esse é um momento importante para buscar mudanças.
+        </p>
+
+      </div>
+
+
+      <div class="zone">
+
+        <div class="zone-title">
+          <span class="zone-dot red"></span>
+          LINHA VERMELHA — ATENÇÃO PRIORITÁRIA
+        </div>
+
+        <p>
+          Muitos sinais de desgaste podem estar presentes
+          ao mesmo tempo. O distanciamento emocional pode
+          estar se aprofundando, tornando importante olhar
+          com atenção para o relacionamento e identificar
+          caminhos de mudança.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <div class="final-message">
+
+      <h3>Mas em qual dessas zonas você está?</h3>
+
+      <p>
+        A resposta depende dos sinais que você identificou
+        e de como eles aparecem no seu relacionamento.
+      </p>
+
+      <p>
+        <strong>
+          Envie suas respostas para a Alinne e receba
+          uma devolutiva individual para compreender
+          melhor o momento que você está vivendo.
+        </strong>
+      </p>
+
+    </div>
+
+
+    <button type="button" id="send">
+      ENVIAR E SOLICITAR MINHA DEVOLUTIVA
     </button>
 
-  </div>
+    <p class="privacy-note">
+      O WhatsApp será aberto com suas respostas preenchidas.
+      Confira a mensagem e confirme o envio.
+    </p>
 
-</section>
-
-
-<!-- PERGUNTA FINAL -->
-
-<section id="closing" class="hidden">
-
-  <h2>Como você enxerga o futuro de vocês?</h2>
-
-  <p>
-    Se o relacionamento continuar exatamente como está hoje,
-    como você imagina vocês daqui a cinco anos?
-  </p>
-
-  <label class="option">
-    <input type="radio" name="future"
-    value="Acredito que estaremos juntos e felizes">
-    Acredito que estaremos juntos e felizes.
-  </label>
-
-  <label class="option">
-    <input type="radio" name="future"
-    value="Tenho dúvidas">
-    Tenho dúvidas.
-  </label>
-
-  <label class="option">
-    <input type="radio" name="future"
-    value="Não acredito que estaremos felizes como casal">
-    Não acredito que estaremos felizes como casal.
-  </label>
-
-  <label class="option">
-    <input type="radio" name="future"
-    value="Não consigo imaginar nosso futuro juntos">
-    Não consigo imaginar nosso futuro juntos.
-  </label>
-
-  <h2>Seu checklist está quase pronto!</h2>
-
-  <p>Como podemos chamar você?</p>
-
-  <input
-    class="field"
-    id="name"
-    placeholder="Seu primeiro nome"
-    maxlength="70"
-  >
-
-  <p class="muted">
-    Ao finalizar, você poderá compartilhar suas respostas
-    com nossa equipe pelo WhatsApp.
-  </p>
-
-  <p class="error" id="error"></p>
-
-  <div class="actions">
-
-    <button type="button" class="secondary" id="back">
-      VOLTAR
+    <button
+      type="button"
+      class="secondary"
+      id="restart">
+      REFAZER CHECKLIST
     </button>
 
-    <button type="button" id="finish">
-      FINALIZAR
-    </button>
-
-  </div>
-
-</section>
-
-
-<!-- TELA FINAL -->
-
-<section id="done" class="hidden">
-
-  <h2>Seu checklist está concluído!</h2>
-
-  <p>
-    O primeiro passo para compreender o que está acontecendo
-    no relacionamento é reconhecer os sinais que fazem
-    parte da sua realidade.
-  </p>
-
-  <p>
-    Agora, envie suas respostas para que possamos compreender
-    melhor o momento que você está vivendo no seu casamento.
-  </p>
-
-  <button type="button" id="send">
-    ENVIAR MINHAS RESPOSTAS PELO WHATSAPP
-  </button>
-
-  <button type="button" class="secondary" id="restart">
-    REFAZER CHECKLIST
-  </button>
-
-</section>
+  </section>
 
 </main>
 
 
 <script>
 
-/* WHATSAPP DA ALINNE */
+  // WHATSAPP DA ALINNE
+  // Formato: 55 + DDD + número
 
-const WHATSAPP = "5549999728631";
-
-
-/* PERGUNTAS */
-
-const groups = [
-
-{
-title: "Comunicação e conexão",
-questions: [
-"Conversamos mais sobre contas, filhos e responsabilidades do que sobre nós dois.",
-"Quando tento falar sobre algo que me incomoda, a conversa termina em discussão ou silêncio.",
-"Sinto que meu marido não compreende o que estou vivendo emocionalmente.",
-"Já deixei de compartilhar algumas coisas porque sinto que ele não me escuta."
-]
-},
-
-{
-title: "Conflitos e desgaste",
-questions: [
-"Discutimos repetidamente pelos mesmos motivos, sem conseguir resolver.",
-"Pequenas situações acabam provocando irritação ou discussões desproporcionais.",
-"Um de nós prefere se afastar em vez de conversar sobre os problemas.",
-"Temos dificuldade de reconhecer nossos erros e pedir desculpas."
-]
-},
-
-{
-title: "Intimidade e carinho",
-questions: [
-"Os abraços, beijos e demonstrações espontâneas de carinho diminuíram.",
-"Nossa intimidade física diminuiu e temos dificuldade de conversar sobre isso.",
-"Mesmo quando estamos juntos, sinto que estamos emocionalmente distantes.",
-"Raramente temos momentos de qualidade somente como casal."
-]
-},
-
-{
-title: "Parceria e reconhecimento",
-questions: [
-"Sinto que as responsabilidades do relacionamento estão desequilibradas.",
-"Tenho a sensação de que meus esforços não são reconhecidos.",
-"Estamos mais preocupados em provar quem está certo do que em compreender um ao outro.",
-"Sinto falta de ter meu marido como parceiro nas dificuldades."
-]
-},
-
-{
-title: "Futuro do relacionamento",
-questions: [
-"Já me perguntei se ainda somos felizes juntos.",
-"Tenho dificuldade de imaginar nosso relacionamento melhorando se continuarmos como estamos.",
-"Sinto que estamos nos acostumando a viver emocionalmente separados.",
-"Tenho medo de que, se nada mudar, nosso casamento acabe."
-]
-}
-
-];
+  const WHATSAPP = "5549999728631";
 
 
-const $ = id => document.getElementById(id);
+  // PERGUNTAS DO CHECKLIST
 
-let step = 0;
+  const groups = [
 
-const selected = new Set();
+    {
+      title: "Comunicação e conexão",
+      questions: [
+        "Conversamos mais sobre contas, filhos e responsabilidades do que sobre nós dois.",
+        "Quando tento falar sobre algo que me incomoda, a conversa termina em discussão ou silêncio.",
+        "Sinto que meu marido não compreende o que estou vivendo emocionalmente.",
+        "Já deixei de compartilhar algumas coisas porque sinto que ele não me escuta."
+      ]
+    },
 
-let message = "";
+    {
+      title: "Conflitos e desgaste",
+      questions: [
+        "Discutimos repetidamente pelos mesmos motivos, sem conseguir resolver.",
+        "Pequenas situações acabam provocando irritação ou discussões desproporcionais.",
+        "Um de nós prefere se afastar em vez de conversar sobre os problemas.",
+        "Temos dificuldade de reconhecer nossos erros e pedir desculpas."
+      ]
+    },
+
+    {
+      title: "Intimidade e carinho",
+      questions: [
+        "Os abraços, beijos e demonstrações espontâneas de carinho diminuíram.",
+        "Nossa intimidade física diminuiu e temos dificuldade de conversar sobre isso.",
+        "Mesmo quando estamos juntos, sinto que estamos emocionalmente distantes.",
+        "Raramente temos momentos de qualidade somente como casal."
+      ]
+    },
+
+    {
+      title: "Parceria e reconhecimento",
+      questions: [
+        "Sinto que as responsabilidades do relacionamento estão desequilibradas.",
+        "Tenho a sensação de que meus esforços não são reconhecidos.",
+        "Estamos mais preocupados em provar quem está certo do que em compreender um ao outro.",
+        "Sinto falta de ter meu marido como parceiro nas dificuldades."
+      ]
+    },
+
+    {
+      title: "Futuro do relacionamento",
+      questions: [
+        "Já me perguntei se ainda somos felizes juntos.",
+        "Tenho dificuldade de imaginar nosso relacionamento melhorando se continuarmos como estamos.",
+        "Sinto que estamos nos acostumando a viver emocionalmente separados.",
+        "Tenho medo de que, se nada mudar, nosso casamento acabe."
+      ]
+    }
+
+  ];
 
 
-/* TROCA DE TELAS */
+  // ELEMENTOS E ESTADO
 
-function show(id) {
+  const $ = id => document.getElementById(id);
 
-  ["intro","quiz","closing","done"].forEach(s => {
+  let step = 0;
 
-    $(s).classList.toggle("hidden", s !== id);
+  const selected = new Set();
 
-  });
-
-  window.scrollTo(0,0);
-
-}
+  let message = "";
 
 
-/* EXIBIR PERGUNTAS */
+  // EXIBIR TELA
 
-function render() {
+  function show(id) {
 
-  const group = groups[step];
+    ["intro", "quiz", "closing", "done"].forEach(s => {
+      $(s).classList.toggle("hidden", s !== id);
+    });
 
-  $("stepLabel").textContent = "Etapa " + (step+1) + " de 5";
+    window.scrollTo(0, 0);
 
-  $("stepTitle").textContent = group.title;
+  }
 
-  $("bar").style.width = ((step+1)*20) + "%";
 
-  $("questions").innerHTML = "";
+  // EXIBIR PERGUNTAS DA ETAPA
 
-  group.questions.forEach((question,i) => {
+  function render() {
 
-    const index = step*4+i;
+    const group = groups[step];
 
-    const label = document.createElement("label");
+    $("stepLabel").textContent =
+      "Etapa " + (step + 1) + " de 5";
 
-    label.className = "question";
+    $("stepTitle").textContent = group.title;
 
-    const checkbox = document.createElement("input");
+    $("bar").style.width =
+      ((step + 1) * 20) + "%";
 
-    checkbox.type = "checkbox";
+    $("questions").innerHTML = "";
 
-    checkbox.checked = selected.has(index);
+    group.questions.forEach((question, i) => {
 
-    checkbox.addEventListener("change", () => {
+      const index = step * 4 + i;
 
-      if(checkbox.checked) {
-        selected.add(index);
-      } else {
-        selected.delete(index);
-      }
+      const label = document.createElement("label");
+      label.className = "question";
+
+      const checkbox = document.createElement("input");
+      checkbox.type = "checkbox";
+      checkbox.checked = selected.has(index);
+
+      checkbox.addEventListener("change", () => {
+
+        if (checkbox.checked) {
+          selected.add(index);
+        } else {
+          selected.delete(index);
+        }
+
+      });
+
+      const span = document.createElement("span");
+
+      span.textContent =
+        (index + 1) + ". " + question;
+
+      label.append(checkbox, span);
+
+      $("questions").appendChild(label);
 
     });
 
-    const span = document.createElement("span");
+    $("prev").style.visibility =
+      step === 0 ? "hidden" : "visible";
 
-    span.textContent = (index+1) + ". " + question;
+    $("next").textContent =
+      step === 4
+        ? "FINALIZAR RESPOSTAS"
+        : "CONTINUAR";
 
-    label.append(checkbox,span);
-
-    $("questions").appendChild(label);
-
-  });
-
-  $("prev").style.visibility = step===0 ? "hidden" : "visible";
-
-  $("next").textContent =
-    step===4 ? "FINALIZAR RESPOSTAS" : "CONTINUAR";
-
-}
+  }
 
 
-/* INICIAR */
+  // INICIAR CHECKLIST
 
-$("start").onclick = () => {
+  $("start").onclick = () => {
 
-  step = 0;
-
-  render();
-
-  show("quiz");
-
-};
-
-
-/* VOLTAR */
-
-$("prev").onclick = () => {
-
-  if(step>0) {
-
-    step--;
+    step = 0;
 
     render();
 
     show("quiz");
 
-  }
-
-};
+  };
 
 
-/* AVANÇAR */
+  // VOLTAR UMA ETAPA
 
-$("next").onclick = () => {
+  $("prev").onclick = () => {
 
-  if(step<4) {
+    if (step > 0) {
 
-    step++;
+      step--;
+
+      render();
+
+      show("quiz");
+
+    }
+
+  };
+
+
+  // AVANÇAR ETAPA
+
+  $("next").onclick = () => {
+
+    if (step < 4) {
+
+      step++;
+
+      render();
+
+      show("quiz");
+
+    } else {
+
+      show("closing");
+
+    }
+
+  };
+
+
+  // VOLTAR À ÚLTIMA ETAPA
+
+  $("back").onclick = () => {
+
+    step = 4;
 
     render();
 
     show("quiz");
 
-  } else {
-
-    show("closing");
-
-  }
-
-};
+  };
 
 
-/* VOLTAR ÀS PERGUNTAS */
+  // FINALIZAR CHECKLIST
 
-$("back").onclick = () => {
+  $("finish").onclick = () => {
 
-  step = 4;
+    const name = $("name").value.trim();
 
-  render();
+    const future = document.querySelector(
+      'input[name="future"]:checked'
+    );
 
-  show("quiz");
+    if (!name || !future) {
 
-};
+      $("error").textContent =
+        "Preencha seu nome e responda à pergunta sobre o futuro.";
 
+      return;
 
-/* CLASSIFICAÇÃO INTERNA */
+    }
 
-function classification(points) {
-
-  if(points<=20) return "Zona Verde";
-
-  if(points<=45) return "Zona Amarela";
-
-  if(points<=65) return "Zona Laranja";
-
-  return "Linha Vermelha";
-
-}
+    $("error").textContent = "";
 
 
-/* FINALIZAR */
+    // ORGANIZAR RESPOSTAS POR CATEGORIA
+    // SEM EXIBIR PONTUAÇÃO OU CLASSIFICAÇÃO
 
-$("finish").onclick = () => {
+    const sections = groups.map((group, groupIndex) => {
 
-  const name = $("name").value.trim();
+      const answers = group.questions
+        .map((question, questionIndex) => {
 
-  const future =
-    document.querySelector('input[name="future"]:checked');
+          const index = groupIndex * 4 + questionIndex;
 
-  if(!name || !future) {
+          if (!selected.has(index)) {
+            return null;
+          }
 
-    $("error").textContent =
-      "Preencha seu nome e responda à pergunta sobre o futuro.";
+          return (index + 1) + ". " + question;
 
-    return;
+        })
+        .filter(Boolean);
 
-  }
-
-  $("error").textContent = "";
-
-  const points = selected.size * 5;
-
-  const answers = [...selected]
-    .sort((a,b) => a-b)
-    .map(i => {
-
-      return (i+1) + ". " +
-        groups[Math.floor(i/4)].questions[i%4];
+      return (
+        group.title.toUpperCase() + "\n" +
+        (
+          answers.length
+            ? answers.join("\n")
+            : "Nenhuma afirmação assinalada."
+        )
+      );
 
     });
 
 
-  message =
-    "CHECKLIST — A LINHA VERMELHA DO CASAMENTO\n\n" +
+    // MENSAGEM ENVIADA PELO WHATSAPP
 
-    "Nome: " + name + "\n" +
+    message =
 
-    "Pontuação interna: " + points + "/100\n" +
+      "CHECKLIST — A LINHA VERMELHA DO CASAMENTO\n\n" +
 
-    "Classificação interna: " +
-    classification(points) + "\n" +
+      "Olá, Alinne! Concluí o checklist e gostaria " +
+      "de receber minha devolutiva individual.\n\n" +
 
-    "Itens marcados: " + selected.size + " de 20\n\n" +
+      "NOME: " + name + "\n\n" +
 
-    "RESPOSTAS ASSINALADAS:\n" +
+      "MINHAS RESPOSTAS:\n\n" +
 
-    (answers.length
-      ? answers.join("\n")
-      : "Nenhuma afirmação marcada.") +
+      sections.join("\n\n") +
 
-    "\n\nFUTURO DO CASAMENTO:\n" +
+      "\n\nCOMO VEJO NOSSO FUTURO:\n" +
 
-    future.value +
+      future.value +
 
-    "\n\nPontuação orientativa, sem validação clínica.";
-
-
-  show("done");
-
-};
+      "\n\nGostaria de compreender em qual zona " +
+      "está o meu casamento e o que minhas " +
+      "respostas podem indicar.";
 
 
-/* ENVIAR PARA O WHATSAPP */
+    show("done");
 
-$("send").onclick = () => {
-
-  const url =
-    "https://wa.me/" +
-    WHATSAPP +
-    "?text=" +
-    encodeURIComponent(message);
-
-  window.location.href = url;
-
-};
+  };
 
 
-/* REFAZER */
+  // ENVIAR PELO WHATSAPP
 
-$("restart").onclick = () => {
+  $("send").onclick = () => {
 
-  selected.clear();
+    if (!message) {
+      alert("Finalize o checklist antes de enviar.");
+      return;
+    }
 
-  step = 0;
+    const url =
+      "https://wa.me/" +
+      WHATSAPP +
+      "?text=" +
+      encodeURIComponent(message);
 
-  $("name").value = "";
+    window.location.href = url;
 
-  document.querySelectorAll(
-    'input[name="future"]'
-  ).forEach(r => r.checked = false);
+  };
 
-  show("intro");
 
-};
+  // REFAZER CHECKLIST
+
+  $("restart").onclick = () => {
+
+    selected.clear();
+
+    step = 0;
+
+    message = "";
+
+    $("name").value = "";
+
+    $("error").textContent = "";
+
+    document.querySelectorAll(
+      'input[name="future"]'
+    ).forEach(r => {
+      r.checked = false;
+    });
+
+    show("intro");
+
+  };
 
 </script>
 
